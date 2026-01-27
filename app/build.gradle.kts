@@ -43,13 +43,14 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.google.firebase:firebase-firestore") //Database
     implementation ("com.google.firebase:firebase-auth") //Authentication
-    //implementation ("com.google.firebase:firebase-database") //RealTIME Database
+    implementation ("com.google.firebase:firebase-database") //RealTIME Database
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
