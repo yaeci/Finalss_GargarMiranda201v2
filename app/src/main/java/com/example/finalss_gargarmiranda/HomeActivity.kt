@@ -7,8 +7,8 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat.enableEdgeToEdge
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +29,10 @@ class HomeActivity : AppCompatActivity() {
         if (!username.isNullOrEmpty()) {
             tvUsernameDisplay.text = username
         }
+
+        // Setup Bottom Navigation
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        NavigationHelper.setupBottomNavigation(this, bottomNav, R.id.navigation_home)
 
         val btnReserve: ImageButton = findViewById(R.id.btn_reserve)
         btnReserve.setOnClickListener {

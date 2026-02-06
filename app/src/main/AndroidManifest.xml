@@ -12,8 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Finalss_GargarMiranda">
         <activity
-            android:name=".ReportFillUpActivity"
+            android:name=".NotificationActivity"
             android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+
         <activity
             android:name=".FillUpActivity"
             android:exported="false" />

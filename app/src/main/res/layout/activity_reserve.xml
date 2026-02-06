@@ -180,14 +180,7 @@
                 app:cornerRadius="12dp"
                 app:strokeColor="#BDBDBD" />
 
-            <EditText
-                android:id="@+id/ET_Others"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:fontFamily="@font/clan_pro_regular_italic"
-                android:hint="Others (Please Specify): "
-                android:inputType="text" />
+        
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

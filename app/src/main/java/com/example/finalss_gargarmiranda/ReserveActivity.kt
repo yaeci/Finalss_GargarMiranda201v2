@@ -3,10 +3,12 @@ package com.example.finalss_gargarmiranda
 import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButton
 
 class ReserveActivity : AppCompatActivity() {
@@ -19,6 +21,15 @@ class ReserveActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        NavigationHelper.setupBottomNavigation(this, bottomNav, 0)
+
+        val btnBack = findViewById<ImageButton>(R.id.btn_back)
+        btnBack.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
         }
 
         val PEArea = findViewById<MaterialButton>(R.id.BTN_peArea)

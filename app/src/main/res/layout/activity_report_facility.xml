@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".ReserveActivity">
+    tools:context=".ReportFacilityActivity">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/roomScrollView"
@@ -40,134 +40,44 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="30dp"
                 android:fontFamily="@font/clan_pro_black"
-                android:text="Report Activity"
+                android:text="Report Facility"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/BTN_peArea"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginBottom="12dp"
-                android:fontFamily="@font/clan_pro_black"
-                android:gravity="start|center_vertical"
-                android:paddingStart="20dp"
-                android:text="PE Area"
-                android:textAllCaps="false"
+            <!-- Issue Description Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/clan_pro_medium"
+                android:text="Please describe the issue you are experiencing:"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                app:cornerRadius="12dp"
-                app:strokeColor="#BDBDBD" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/BTN_AVR"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginBottom="12dp"
-                android:fontFamily="@font/clan_pro_black"
-                android:gravity="start|center_vertical"
-                android:paddingStart="20dp"
-                android:text="AVR"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:cornerRadius="12dp"
-                app:strokeColor="#BDBDBD" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/BTN_caseRoom"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginBottom="12dp"
-                android:fontFamily="@font/clan_pro_black"
-                android:gravity="start|center_vertical"
-                android:paddingStart="20dp"
-                android:text="Case Room"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:cornerRadius="12dp"
-                app:strokeColor="#BDBDBD" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/BTN_LRCD1"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginBottom="12dp"
-                android:fontFamily="@font/clan_pro_black"
-                android:gravity="start|center_vertical"
-                android:paddingStart="20dp"
-                android:text="LRC Discussion Room 1"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:cornerRadius="12dp"
-                app:strokeColor="#BDBDBD" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/BTN_LRCD2"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginBottom="12dp"
-                android:fontFamily="@font/clan_pro_black"
-                android:gravity="start|center_vertical"
-                android:paddingStart="20dp"
-                android:text="LRC Discussion Room 2"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:cornerRadius="12dp"
-                app:strokeColor="#BDBDBD" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/BTN_sportsComplex"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginBottom="12dp"
-                android:fontFamily="@font/clan_pro_black"
-                android:gravity="start|center_vertical"
-                android:paddingStart="20dp"
-                android:text="Sports Complex"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:cornerRadius="12dp"
-                app:strokeColor="#BDBDBD" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/BTN_computerLab"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginBottom="12dp"
-                android:fontFamily="@font/clan_pro_black"
-                android:gravity="start|center_vertical"
-                android:paddingStart="20dp"
-                android:text="Computer Laboratory"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:cornerRadius="12dp"
-                app:strokeColor="#BDBDBD" />
+                android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/ET_Others"
+                android:id="@+id/ET_IssueDescription"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:fontFamily="@font/clan_pro_regular_italic"
-                android:hint="Others (Please Specify): "
-                android:inputType="text" />
+                android:layout_height="150dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/edittext_outline"
+                android:gravity="top|start"
+                android:hint="Type here..."
+                android:inputType="textMultiLine"
+                android:padding="12dp"
+                android:textSize="14sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/BTN_SubmitReport"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/yellow"
+                android:fontFamily="@font/clan_pro_black"
+                android:text="Submit Report"
+                android:textColor="@color/white"
+                app:cornerRadius="12dp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
