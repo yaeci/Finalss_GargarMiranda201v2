@@ -103,6 +103,9 @@
     </LinearLayout>
 
     <!-- Report Facility -->
+
+    <!-- Pending Reservations (Faculty Only) -->
+
     <LinearLayout
         android:id="@+id/ll_report"
         android:layout_width="wrap_content"
@@ -125,10 +128,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:gravity="center"
             android:fontFamily="@font/clan_pro_black"
+            android:gravity="center"
             android:text="REPORT\nFACILITY"
             android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_pending"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/ll_reservation_list"
+        app:layout_constraintStart_toStartOf="@+id/ll_reservation_list"
+        app:layout_constraintTop_toTopOf="@+id/ll_report">
+
+        <ImageButton
+            android:id="@+id/btn_pending_reservations"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/pending_list_regular_full" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:fontFamily="@font/clan_pro_black"
+            android:text="PENDING\nRESERVATIONS"
+            android:textColor="@color/black"
             android:textSize="12sp"
             android:textStyle="bold" />
     </LinearLayout>
