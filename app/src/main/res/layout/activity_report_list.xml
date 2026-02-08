@@ -16,6 +16,7 @@
         android:background="?attr/selectableItemBackgroundBorderless"
         android:padding="12dp"
         android:scaleType="fitCenter"
+        android:elevation="10dp"
         app:srcCompat="@drawable/arrow_left_solid_full"
         app:tint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,5 +85,17 @@
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <TextView
+        android:id="@+id/emptyStateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No reports have been submitted yet."
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,9 @@ package com.example.finalss_gargarmiranda
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +15,7 @@ class ReportListActivity : AppCompatActivity() {
 
     private lateinit var reportRecyclerView: RecyclerView
     private lateinit var reportAdapter: ReportAdapter
+    private lateinit var emptyStateTextView: TextView
     private val reportList = mutableListOf<Report>()
     private val db = FirebaseFirestore.getInstance()
 
@@ -25,6 +28,7 @@ class ReportListActivity : AppCompatActivity() {
             finish()
         }
 
+        emptyStateTextView = findViewById(R.id.emptyStateTextView)
         reportRecyclerView = findViewById(R.id.reportRecyclerView)
         reportRecyclerView.layoutManager = LinearLayoutManager(this)
         reportAdapter = ReportAdapter(reportList)
@@ -48,6 +52,15 @@ class ReportListActivity : AppCompatActivity() {
                     report.id = doc.id
                     reportList.add(report)
                 }
+
+                if (reportList.isEmpty()) {
+                    emptyStateTextView.visibility = View.VISIBLE
+                    reportRecyclerView.visibility = View.GONE
+                } else {
+                    emptyStateTextView.visibility = View.GONE
+                    reportRecyclerView.visibility = View.VISIBLE
+                }
+
                 reportAdapter.notifyDataSetChanged()
             }
     }

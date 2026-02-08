@@ -3,7 +3,9 @@ package com.example.finalss_gargarmiranda
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +17,7 @@ class ReservationListActivity : AppCompatActivity() {
 
     private lateinit var reservationRecyclerView: RecyclerView
     private lateinit var reservationAdapter: ReservationAdapter
+    private lateinit var emptyStateTextView: TextView
     private val reservationList = mutableListOf<Reservation>()
 
     private lateinit var firestore: FirebaseFirestore
@@ -27,6 +30,7 @@ class ReservationListActivity : AppCompatActivity() {
         firestore = FirebaseFirestore.getInstance()
         firebaseAuth = FirebaseAuth.getInstance()
 
+        emptyStateTextView = findViewById(R.id.emptyStateTextView)
         reservationRecyclerView = findViewById(R.id.reservationRecyclerView)
         reservationRecyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -83,6 +87,15 @@ class ReservationListActivity : AppCompatActivity() {
                         )
                         reservationList.add(reservation)
                     }
+
+                    if (reservationList.isEmpty()) {
+                        emptyStateTextView.visibility = View.VISIBLE
+                        reservationRecyclerView.visibility = View.GONE
+                    } else {
+                        emptyStateTextView.visibility = View.GONE
+                        reservationRecyclerView.visibility = View.VISIBLE
+                    }
+
                     reservationAdapter.notifyDataSetChanged()
                 }
         }
