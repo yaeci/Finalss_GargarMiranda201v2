@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -32,9 +33,15 @@ class ProfileActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val btnBack = findViewById<ImageButton>(R.id.btn_back)
+        btnBack.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
         val currentUser = auth.currentUser
         val fullNameTextView = findViewById<TextView>(R.id.tv_full_name)
         val emailTextView = findViewById<TextView>(R.id.tv_email)
+        val userTypeTextView = findViewById<TextView>(R.id.tv_user_type)
 
         if (currentUser != null) {
             emailTextView.text = currentUser.email
@@ -44,7 +51,8 @@ class ProfileActivity : AppCompatActivity() {
                     if (document != null) {
                         val firstName = document.getString("firstName") ?: ""
                         val lastName = document.getString("lastName") ?: ""
-                        fullNameTextView.text = "$firstName $lastName"
+                        fullNameTextView.text = "$firstName $lastName".trim()
+                        userTypeTextView.text = document.getString("userType") ?: ""
                     }
                 }
         }

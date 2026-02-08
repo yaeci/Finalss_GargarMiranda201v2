@@ -8,190 +8,217 @@
     android:background="#FFFFFF"
     tools:context=".HomeActivity">
 
-    <ImageView
-        android:id="@+id/IV_Background"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/signup_up_element" />
 
-    <!-- Welcome Header -->
-    <LinearLayout
-        android:id="@+id/welcome_banner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:gravity="center"
-        android:orientation="vertical"
+    <View
+        android:id="@+id/header_bg"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/blue"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/welcome_card"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="32dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Welcome!"
-            android:fontFamily="@font/clan_pro"
-            android:textColor="@android:color/white"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tv_username_display"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="User"
-            android:fontFamily="@font/clan_pro_regular_italic"
-            android:textColor="@color/yellow"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <!-- Reserve Facility -->
-    <LinearLayout
-        android:id="@+id/ll_reserve"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toStartOf="@+id/ll_reservation_list"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_banner">
-
-        <ImageButton
-            android:id="@+id/btn_reserve"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/white_rounded_bg"
-            android:elevation="8dp"
-            android:padding="20dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_reservefacility"
-
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center"
-            android:text="RESERVE\nFACILITY"
-            android:fontFamily="@font/clan_pro_black"
-            android:textColor="@color/yellow"
-            android:textSize="12sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:orientation="vertical">
 
-    <!-- List of Reservations -->
-    <LinearLayout
-        android:id="@+id/ll_reservation_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/clan_pro_bold"
+                android:text="Welcome User,"
+                android:textColor="@color/blue"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_username_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/clan_pro_bold"
+                android:text="Name"
+                android:textColor="@color/yellow"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Main Content Container -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/main_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ll_reserve"
-        app:layout_constraintTop_toTopOf="@+id/ll_reserve">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_bg">
 
-        <ImageButton
-            android:id="@+id/btn_reservation_list"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/white_rounded_bg"
-            android:elevation="8dp"
-            android:padding="20dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_reservationlist" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:gravity="center"
-            android:fontFamily="@font/clan_pro_black"
-            android:text="LIST OF\nRESERVATIONS"
-            android:textColor="@color/yellow"
-            android:textSize="12sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            <!-- Reserve Facility -->
+            <LinearLayout
+                android:id="@+id/ll_reserve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/ll_report"
+                app:layout_constraintEnd_toStartOf="@+id/ll_reservation_list"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    <!-- Report Facility -->
+                <ImageButton
+                    android:id="@+id/btn_reserve"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:background="@drawable/rounded_input_bg"
+                    android:padding="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_reservefacility" />
 
-    <!-- Pending Reservations (Faculty Only) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/clan_pro_black"
+                    android:gravity="center"
+                    android:text="RESERVE\nFACILITY"
+                    android:textColor="#1D3557"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_report"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="@+id/ll_reserve"
-        app:layout_constraintTop_toBottomOf="@+id/ll_reserve">
+            <!-- List of Reservations -->
+            <LinearLayout
+                android:id="@+id/ll_reservation_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/ll_pending"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ll_reserve"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/btn_report_facility"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/white_rounded_bg"
-            android:elevation="8dp"
-            android:padding="20dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_reportfacility" />
+                <ImageButton
+                    android:id="@+id/btn_reservation_list"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:background="@drawable/rounded_input_bg"
+                    android:padding="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_reservationlist" />
 
-        <TextView
-            android:id="@+id/tv_report_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/clan_pro_black"
-            android:gravity="center"
-            android:text="REPORT\nFACILITY"
-            android:textColor="@color/yellow"
-            android:textSize="12sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/clan_pro_black"
+                    android:gravity="center"
+                    android:text="LIST OF\nRESERVATIONS"
+                    android:textColor="#1D3557"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_pending"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@+id/ll_reservation_list"
-        app:layout_constraintStart_toStartOf="@+id/ll_reservation_list"
-        app:layout_constraintTop_toTopOf="@+id/ll_report">
+            <!-- Report Facility -->
+            <LinearLayout
+                android:id="@+id/ll_report"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ll_pending"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_reserve">
 
-        <ImageButton
-            android:id="@+id/btn_pending_reservations"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/white_rounded_bg"
-            android:elevation="8dp"
-            android:padding="20dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/pending_list_regular_full" />
+                <ImageButton
+                    android:id="@+id/btn_report_facility"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:background="@drawable/rounded_input_bg"
+                    android:padding="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_reportfacility" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:gravity="center"
-            android:fontFamily="@font/clan_pro_black"
-            android:text="PENDING\nRESERVATIONS"
-            android:textColor="@color/yellow"
-            android:textSize="12sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_report_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/clan_pro_black"
+                    android:gravity="center"
+                    android:text="REPORT\nFACILITY"
+                    android:textColor="#1D3557"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
-    <!-- Floating Modern Bottom Navigation with New Icons -->
+            <!-- Pending Reservations (Faculty Only) -->
+            <LinearLayout
+                android:id="@+id/ll_pending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ll_report"
+                app:layout_constraintTop_toBottomOf="@+id/ll_reservation_list">
+
+                <ImageButton
+                    android:id="@+id/btn_pending_reservations"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:background="@drawable/rounded_input_bg"
+                    android:padding="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pending_list_regular_full" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/clan_pro_black"
+                    android:gravity="center"
+                    android:text="PENDING\nRESERVATIONS"
+                    android:textColor="#1D3557"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Floating Modern Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -202,7 +229,8 @@
         android:background="@drawable/modern_nav_background"
         android:elevation="8dp"
         app:itemIconSize="32dp"
-        app:itemIconTint="@color/white"
+        app:itemIconTint="@color/black"
+        app:itemActiveIndicatorColor="@color/blue"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
