@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Finalss_GargarMiranda">
         <activity
-            android:name=".ReservationListActivity"
+            android:name=".ReportFacilityActivity"
             android:exported="false" />
         <activity
             android:name=".ReportListActivity"

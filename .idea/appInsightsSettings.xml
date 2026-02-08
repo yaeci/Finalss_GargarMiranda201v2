@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.finalss_gargarmiranda" />
+                  <option name="mobileSdkAppId" value="1:154461436844:android:613cb1f4c25069e3579809" />
+                  <option name="projectId" value="nuc-facilityreservation" />
+                  <option name="projectNumber" value="154461436844" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
