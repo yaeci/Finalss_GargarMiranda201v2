@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Finalss_GargarMiranda">
         <activity
+            android:name=".ReservationListActivity"
+            android:exported="false" />
+        <activity
             android:name=".ReservationDetailsActivity"
             android:exported="false" />
         <activity
