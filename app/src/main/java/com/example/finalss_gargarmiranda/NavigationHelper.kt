@@ -8,7 +8,7 @@ object NavigationHelper {
 
     fun setupBottomNavigation(context: Context, bottomNavigationView: BottomNavigationView, currentItemId: Int) {
         bottomNavigationView.selectedItemId = currentItemId
-        
+
         bottomNavigationView.setOnItemSelectedListener { item ->
             if (item.itemId == currentItemId) {
                 return@setOnItemSelectedListener true
@@ -17,7 +17,7 @@ object NavigationHelper {
             val intent = when (item.itemId) {
                 R.id.navigation_notifications -> Intent(context, NotificationActivity::class.java)
                 R.id.navigation_home -> Intent(context, HomeActivity::class.java)
-                R.id.navigation_settings -> Intent(context, SettingsActivity::class.java)
+                R.id.navigation_profile -> Intent(context, ProfileActivity::class.java)
                 else -> null
             }
 
