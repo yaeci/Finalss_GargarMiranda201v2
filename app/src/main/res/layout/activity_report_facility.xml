@@ -89,7 +89,7 @@
         android:background="@drawable/modern_nav_background"
         android:elevation="8dp"
         app:itemIconSize="32dp"
-        app:itemIconTint="@android:color/black"
+        app:itemIconTint="@android:color/white"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
