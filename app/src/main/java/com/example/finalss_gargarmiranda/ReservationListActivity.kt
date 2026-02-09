@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -28,6 +29,9 @@ class ReservationListActivity : AppCompatActivity() {
 
         firestore = FirebaseFirestore.getInstance()
         firebaseAuth = FirebaseAuth.getInstance()
+
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        NavigationHelper.setupBottomNavigation(this, bottomNav, 0)
 
         emptyStateTextView = findViewById(R.id.emptyStateTextView)
         reservationRecyclerView = findViewById(R.id.reservationRecyclerView)

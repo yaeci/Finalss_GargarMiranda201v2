@@ -7,10 +7,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 object NavigationHelper {
 
     fun setupBottomNavigation(context: Context, bottomNavigationView: BottomNavigationView, currentItemId: Int) {
-        bottomNavigationView.selectedItemId = currentItemId
+        if (currentItemId != 0) {
+            bottomNavigationView.selectedItemId = currentItemId
+        }
 
         bottomNavigationView.setOnItemSelectedListener { item ->
-            if (item.itemId == currentItemId) {
+            if (currentItemId != 0 && item.itemId == currentItemId) {
                 return@setOnItemSelectedListener true
             }
 

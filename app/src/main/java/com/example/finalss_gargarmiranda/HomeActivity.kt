@@ -54,7 +54,7 @@ class HomeActivity : AppCompatActivity() {
                             llPending.visibility = View.VISIBLE
                             tvReportLabel.text = "LIST OF\nREPORTS"
                         } else {
-                            llPending.visibility = View.GONE
+                            llPending.visibility = View.INVISIBLE
                             tvReportLabel.text = "REPORT\nFACILITY"
                         }
                     }

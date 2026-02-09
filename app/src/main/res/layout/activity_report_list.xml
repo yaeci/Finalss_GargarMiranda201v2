@@ -109,7 +109,6 @@
         android:elevation="8dp"
         app:itemIconSize="32dp"
         app:itemIconTint="@color/black"
-        app:itemActiveIndicatorColor="@color/blue"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

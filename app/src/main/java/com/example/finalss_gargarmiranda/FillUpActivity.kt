@@ -1,5 +1,7 @@
 package com.example.finalss_gargarmiranda
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -7,8 +9,10 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Locale
 
 class FillUpActivity : AppCompatActivity() {
@@ -17,6 +21,9 @@ class FillUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_fill_up)
 
         val facilityName = intent.getStringExtra("FACILITY_NAME")
+
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        NavigationHelper.setupBottomNavigation(this, bottomNav, 0)
 
         val btnBack = findViewById<ImageButton>(R.id.btn_back)
         btnBack.setOnClickListener {
@@ -34,6 +41,24 @@ class FillUpActivity : AppCompatActivity() {
         val speakerEditText = findViewById<EditText>(R.id.ETFillUp_Speaker)
         val submitButton = findViewById<Button>(R.id.BTN_Submit)
 
+        datesEditText.isFocusable = false
+        datesEditText.isClickable = true
+        datesEditText.setOnClickListener {
+            showDatePickerDialog(datesEditText)
+        }
+
+        timeFromEditText.isFocusable = false
+        timeFromEditText.isClickable = true
+        timeFromEditText.setOnClickListener {
+            showTimePickerDialog(timeFromEditText)
+        }
+
+        timeToEditText.isFocusable = false
+        timeToEditText.isClickable = true
+        timeToEditText.setOnClickListener {
+            showTimePickerDialog(timeToEditText)
+        }
+
         submitButton.setOnClickListener {
             val currentUser = FirebaseAuth.getInstance().currentUser
             if (currentUser == null) {
@@ -41,17 +66,17 @@ class FillUpActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val timeFrom = timeFromEditText.text.toString()
-            val timeTo = timeToEditText.text.toString()
-            val date = datesEditText.text.toString()
+            val name = nameEditText.text.toString().trim()
+            val position = positionEditText.text.toString().trim()
+            val title = titleEditText.text.toString().trim()
+            val date = datesEditText.text.toString().trim()
+            val days = daysEditText.text.toString().trim()
+            val timeFrom = timeFromEditText.text.toString().trim()
+            val timeTo = timeToEditText.text.toString().trim()
+            val attendees = attendeesEditText.text.toString().trim()
 
-            if (!isValidDate(date)) {
-                Toast.makeText(this, "Invalid date format. Please use dd/mm/yy", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            if (!isValidTime(timeFrom) || !isValidTime(timeTo)) {
-                Toast.makeText(this, "Invalid time format. Please use hh:mma or hh:mmam", Toast.LENGTH_SHORT).show()
+            if (name.isEmpty() || position.isEmpty() || title.isEmpty() || date.isEmpty() || days.isEmpty() || timeFrom.isEmpty() || timeTo.isEmpty() || attendees.isEmpty()) {
+                Toast.makeText(this, "Please fill up all required fields.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -66,18 +91,18 @@ class FillUpActivity : AppCompatActivity() {
                             "facilityName" to facilityName,
                             "status" to "pending",
                             "submittedBy" to hashMapOf(
-                                "name" to nameEditText.text.toString(),
-                                "position" to positionEditText.text.toString(),
+                                "name" to name,
+                                "position" to position,
                                 "email" to currentUser.email
                             ),
                             "activityDetails" to hashMapOf(
-                                "title" to titleEditText.text.toString(),
-                                "attendees" to attendeesEditText.text.toString(),
-                                "speaker" to speakerEditText.text.toString()
+                                "title" to title,
+                                "attendees" to attendees,
+                                "speaker" to speakerEditText.text.toString().trim()
                             ),
                             "reservationSlot" to hashMapOf(
                                 "date" to date,
-                                "days" to daysEditText.text.toString(),
+                                "days" to days,
                                 "time" to time
                             )
                         )
@@ -97,29 +122,33 @@ class FillUpActivity : AppCompatActivity() {
         }
     }
 
-    private fun isValidDate(date: String): Boolean {
-        val sdf = SimpleDateFormat("dd/MM/yy", Locale.US)
-        sdf.isLenient = false
-        return try {
-            sdf.parse(date)
-            true
-        } catch (e: Exception) {
-            false
-        }
+    private fun showDatePickerDialog(editText: EditText) {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
+            val selectedDate = Calendar.getInstance()
+            selectedDate.set(selectedYear, selectedMonth, selectedDay)
+            val sdf = SimpleDateFormat("dd/MM/yy", Locale.US)
+            editText.setText(sdf.format(selectedDate.time))
+        }, year, month, day)
+        datePickerDialog.show()
     }
 
-    private fun isValidTime(time: String): Boolean {
-        return try {
-            val sdf = if (time.length == 7) {
-                SimpleDateFormat("hh:mma", Locale.US)
-            } else {
-                SimpleDateFormat("h:mma", Locale.US)
-            }
-            sdf.isLenient = false
-            sdf.parse(time)
-            true
-        } catch (e: Exception) {
-            false
-        }
+    private fun showTimePickerDialog(editText: EditText) {
+        val calendar = Calendar.getInstance()
+        val hour = calendar.get(Calendar.HOUR_OF_DAY)
+        val minute = calendar.get(Calendar.MINUTE)
+
+        val timePickerDialog = TimePickerDialog(this, { _, selectedHour, selectedMinute ->
+            val selectedTime = Calendar.getInstance()
+            selectedTime.set(Calendar.HOUR_OF_DAY, selectedHour)
+            selectedTime.set(Calendar.MINUTE, selectedMinute)
+            val sdf = SimpleDateFormat("hh:mma", Locale.US)
+            editText.setText(sdf.format(selectedTime.time).lowercase())
+        }, hour, minute, false)
+        timePickerDialog.show()
     }
 }

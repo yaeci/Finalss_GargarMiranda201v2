@@ -49,10 +49,17 @@ class ProfileActivity : AppCompatActivity() {
             db.collection("users").document(userId).get()
                 .addOnSuccessListener { document ->
                     if (document != null) {
-                        val firstName = document.getString("firstName") ?: ""
-                        val lastName = document.getString("lastName") ?: ""
-                        fullNameTextView.text = "$firstName $lastName".trim()
-                        userTypeTextView.text = document.getString("userType") ?: ""
+                        val firstName = document.getString("firstName")
+                        val lastName = document.getString("lastName")
+                        val userType = document.getString("userType")
+
+                        if (!firstName.isNullOrEmpty() && !lastName.isNullOrEmpty()) {
+                            fullNameTextView.text = "$firstName $lastName".trim()
+                        }
+
+                        if (!userType.isNullOrEmpty()) {
+                            userTypeTextView.text = userType
+                        }
                     }
                 }
         }
